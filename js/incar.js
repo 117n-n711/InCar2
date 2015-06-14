@@ -218,7 +218,9 @@ function putFootballViews(result){
 	for(i in result.tabs){
 		alert("1");
 		if(i.includes("saicheng") && result.tabs[i]){
+			alert("6");
 			var h2 = document.createElement("h2");
+			alert("7");
 			h2.innerText = result.tabs[i];
 			alert("2");
 			
@@ -295,20 +297,17 @@ function putFootballList(result){
 	var h2 = document.createElement("h2");
 	h2.innerText = result.key;
 			
-			
+	
+		alert("1");
 	var ul = document.createElement("ul");
 	ul.setAttribute("class", "ui-listview ui-listview-inset ui-corner-all ui-shadow");
 	ul.setAttribute("data-role", "listview");
 	ul.setAttribute("data-insert", "true");
 	if(result){
-		alert("1");
 		if(result.list){
-			alert("2");
 			for(j in result.list){
-				if(j ==0){alert("3");}
 				var item = result.list[j];
 				if(item['c4T1'] && item['c4T2']){
-					if(j ==0){alert("4");}
 					var lis = document.createElement("li");
 					alert("1hehe");
 					lis.style.overflow = "hidden";
