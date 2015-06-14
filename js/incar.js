@@ -61,7 +61,6 @@ function getParkingAround(){
 	//*/
 	var latlng = {"lat": 31.210485, "lng": 121.43101};
 	url += "&lat="+latlng.lat+"&lon="+latlng.lng;
-	console.log(url);
 	var ob_map = new GMaps({
 		el: '#parking_around_map',
 		lat: latlng.lat,
@@ -209,7 +208,6 @@ function checkFootballViews(url){
 	$.get(url, function(data){
 		console.log(data);
 		if(data.reason == "查询成功"){
-			console.log(data);
 			putFootballViews(data.result);
 		}else{
 			$("#football_search_error")[0].innerText = "     Content not found.";
@@ -255,12 +253,11 @@ function putFootballViews(result){
 					
 					var atag = document.createElement("a");
 					atag.setAttribute("class", "ui-link-inherit");
-					atag.setAttribute("href", "javascript:void(0);");
-					
 					for(o in item){
 						atag[o] = item[o];
 					}
-					atag.onclick = function(e){openFootballLeague(this);}
+					atag.onclick = function(e){openFootballLeague(this);window.location.href = "#football_single_live";}
+					
 					
 					var h2in = document.createElement("h2");
 					h2in.setAttribute("h2", "ui-li-heading");
@@ -329,13 +326,12 @@ function putFootballList(result){
 					spanarr.innerText = " ";
 					
 					var atag = document.createElement("a");
-					atag.setAttribute("class", "ui-link-inherit");
-					atag.setAttribute("href", "javascript:void(0);");
-					
+					atag.addAttribute("class", "ui-link-inherit");
 					for(o in item){
 						atag[o] = item[o];
 					}
-					atag.onclick = function(e){openFootballTeam(this);}
+					atag.onclick = function(d){openFootballTeam(this);window.location.href = "#football_single_live";}
+					
 					
 					var h2in = document.createElement("h2");
 					h2in.setAttribute("h2", "ui-li-heading");
@@ -365,6 +361,7 @@ function putFootballList(result){
 	}
 }
 function openFootballLeague(item){
+	console.log(item);
 	//item = {"c1": "未开赛","c2": "12-06周六","c3": "03:30","c4R": "VS","c4T1": "图卢兹","c4T1URL": "http://match.sports.sina.com.cn/football/team.php?id=486","c4T2": "摩纳哥","c4T2URL": "http://match.sports.sina.com.cn/football/team.php?id=317","c51": "视频暂无","c51Link": "http:\/\/sports.sina.com.cn\/g\/laliga\/2015-05-03\/02497595119.shtml","c52": "图文直播","c52Link": "http://match.sports.sina.com.cn/livecast/g/live.php?id=111967"};
 	$("#football_single_live_heading")[0].innerHTML = item.c1;
 	$("#football_single_team1_name")[0].innerHTML = item.c4T1;
@@ -398,10 +395,6 @@ function openFootballLeague(item){
 	}else{
 		
 	}
-	$("#football_single_live")[0].addEventListener("pagebeforechange", function(){alert("ffds");
-		$("#football_single_item_iframe")[0].innerHTML = "";
-	});
-	window.location.href = "#football_single_live";
 }
 function openFootballTeam(item){
 	//item = {"c1":"西甲","c2":"05-03","c3":"02:00","c4R":"2-3","c4T1":"塞维利亚","c4T1URL":"http:\/\/match.sports.sina.com.cn\/football\/team.php?id=166","c4T2":"皇家马德里","c4T2URL":"http:\/\/match.sports.sina.com.cn\/football\/team.php?id=157","c51":"","c52":"视频集锦","c52Link":"http://sports.sina.com.cn/g/ucl/2014-11-27/04347425813.shtml","c53":"全场战报","c53Link":"http:\/\/sports.sina.com.cn\/g\/laliga\/2015-05-03\/02497595119.shtml","c54":"","c54Link":""};
@@ -438,12 +431,14 @@ function openFootballTeam(item){
 	$("#football_single_live")[0].addEventListener("pagebeforechange", function(){alert("ffds");
 		$("#football_single_item_iframe")[0].innerHTML = "";
 	});
-	window.location.href = "#football_single_live";
+	
 }
 function openFootballLiveIframe(item){
+	$("#football_single_item_iframe")[0].innerHTML =""; 
 	$("#football_single_item_iframe")[0].setAttribute("src", item.valueUrl);
 	window.location.href = "#football_single_live_iframe";
 }
 function closeFootballIframe(){
 	$("#football_single_item_iframe")[0].setAttribute("src", "");
 }
+//haha
