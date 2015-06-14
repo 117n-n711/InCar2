@@ -356,6 +356,7 @@ function putFootballList(result){
 					
 					lis.appendChild(divf);
 					ul.appendChild(lis);
+					alert(j+" dfs");
 				}
 			}
 			if(ul.hasChildNodes()){
