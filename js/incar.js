@@ -194,8 +194,6 @@ function searchFootball(){
 function checkFootballList(url){
 	console.log(url);
 	$.get(url, function(data){
-		console.log(data);
-		alert(data.reason);
 		if(data.reason == "查询成功"){
 			putFootballList(data.result);
 		}
@@ -207,8 +205,6 @@ function checkFootballList(url){
 function checkFootballViews(url){
 	console.log(url);
 	$.get(url, function(data){
-		console.log(data);
-		alert(data.reason);
 		if(data.reason == "查询成功"){
 			putFootballViews(data.result);
 		}else{
@@ -220,18 +216,21 @@ function putFootballViews(result){
 	var div = $("#football_search_values")[0];
 	div.innerHTML = "";
 	for(i in result.tabs){
+		alert("1");
 		if(i.includes("saicheng") && result.tabs[i]){
 			var h2 = document.createElement("h2");
 			h2.innerText = result.tabs[i];
-			
+			alert("2");
 			
 			var ul = document.createElement("ul");
 			ul.setAttribute("class", "ui-listview ui-listview-inset ui-corner-all ui-shadow");
 			ul.setAttribute("data-role", "listview");
 			ul.setAttribute("data-insert", "true");
 			for(j in result.views[i]){
+				if(j ==0){alert("3");}
 				var item = result.views[i][j];
 				if(item['c4T1'] && item['c4T2']){
+				if(j ==0){alert("4");}
 					var lis = document.createElement("li");
 					lis.style.overflow = "hidden";
 					lis.setAttribute("data-iconpos", "right");
@@ -282,6 +281,7 @@ function putFootballViews(result){
 				}
 			}
 			if(ul.hasChildNodes()){
+				alert("4");
 				div.appendChild(h2);
 				div.appendChild(ul);
 			}
@@ -301,11 +301,14 @@ function putFootballList(result){
 	ul.setAttribute("data-role", "listview");
 	ul.setAttribute("data-insert", "true");
 	if(result){
+		alert("1");
 		if(result.list){
+			alert("2");
 			for(j in result.list){
-				
+				if(j ==0){alert("3");}
 				var item = result.list[j];
 				if(item['c4T1'] && item['c4T2']){
+				if(j ==0){alert("4");}
 					var lis = document.createElement("li");
 					lis.style.overflow = "hidden";
 					lis.setAttribute("data-iconpos", "right");
@@ -332,7 +335,7 @@ function putFootballList(result){
 					for(o in item){
 						atag[o] = item[o];
 					}
-					atag.onclick = function(d){openFootballTeam(this);window.location.href = "#football_single_live";}
+					atag.onclick = function(d){openFootballTeam(this);window.location.href="#football_single_live";}
 					
 					
 					var h2in = document.createElement("h2");
@@ -356,6 +359,7 @@ function putFootballList(result){
 				}
 			}
 			if(ul.hasChildNodes()){
+				alert("here");
 				div.appendChild(h2);
 				div.appendChild(ul);
 			}
@@ -363,6 +367,7 @@ function putFootballList(result){
 	}
 }
 function openFootballLeague(item){
+	alert("haa");
 	console.log(item);
 	//item = {"c1": "未开赛","c2": "12-06周六","c3": "03:30","c4R": "VS","c4T1": "图卢兹","c4T1URL": "http://match.sports.sina.com.cn/football/team.php?id=486","c4T2": "摩纳哥","c4T2URL": "http://match.sports.sina.com.cn/football/team.php?id=317","c51": "视频暂无","c51Link": "http:\/\/sports.sina.com.cn\/g\/laliga\/2015-05-03\/02497595119.shtml","c52": "图文直播","c52Link": "http://match.sports.sina.com.cn/livecast/g/live.php?id=111967"};
 	$("#football_single_live_heading")[0].innerHTML = item.c1;
