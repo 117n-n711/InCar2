@@ -195,6 +195,7 @@ function checkFootballList(url){
 	console.log(url);
 	$.get(url, function(data){
 		console.log(data);
+		alert(data.reason);
 		if(data.reason == "查询成功"){
 			putFootballList(data.result);
 		}
@@ -207,6 +208,7 @@ function checkFootballViews(url){
 	console.log(url);
 	$.get(url, function(data){
 		console.log(data);
+		alert(data.reason);
 		if(data.reason == "查询成功"){
 			putFootballViews(data.result);
 		}else{
