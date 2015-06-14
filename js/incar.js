@@ -308,7 +308,7 @@ function putFootballList(result){
 				if(j ==0){alert("3");}
 				var item = result.list[j];
 				if(item['c4T1'] && item['c4T2']){
-				if(j ==0){alert("4");}
+					if(j ==0){alert("4");}
 					var lis = document.createElement("li");
 					lis.style.overflow = "hidden";
 					lis.setAttribute("data-iconpos", "right");
