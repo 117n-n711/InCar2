@@ -310,6 +310,7 @@ function putFootballList(result){
 				if(item['c4T1'] && item['c4T2']){
 					if(j ==0){alert("4");}
 					var lis = document.createElement("li");
+					alert("1hehe");
 					lis.style.overflow = "hidden";
 					lis.setAttribute("data-iconpos", "right");
 					lis.setAttribute("data-wrapperels", "div");
@@ -318,42 +319,56 @@ function putFootballList(result){
 					lis.setAttribute("data-corners", "false");
 					lis.setAttribute("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-last-child ui-btn-up-c");
 					lis.setAttribute("data-theme", "c");
+					alert("1hehe2");
 					
 					var divf = document.createElement("div");
 					divf.setAttribute("class", "ui-btn-inner ui-li");
 					
 					
+					alert("1hehe3");
 					var divs = document.createElement("div");
 					divs.setAttribute("class", "ui-btn-text");
 					
+					alert("1hehe4");
 					var spanarr = document.createElement("span");
 					spanarr.setAttribute("class", "ui-icon ui-icon-arrow-r ui-icon-shadow");
 					spanarr.innerText = " ";
 					
+					alert("1hehe5");
 					var atag = document.createElement("a");
 					atag.addAttribute("class", "ui-link-inherit");
+					
+					alert("1hehe6");
 					for(o in item){
 						atag[o] = item[o];
 					}
+					
+					alert("1hehe7");
 					atag.onclick = function(d){openFootballTeam(this);window.location.href="#football_single_live";}
 					
 					
+					alert("1hehe8");
 					var h2in = document.createElement("h2");
 					h2in.setAttribute("h2", "ui-li-heading");
 					h2in.innerText = item["c1"] + "| " + item["c4T1"] + " VS " + item["c4T2"];
 					
+					alert("1hehe9");
 					var pin = document.createElement("p");
 					pin.setAttribute("class", "ui-li-desc");
 					pin.innerHTML = item["c2"] + " - " + item["c3"] + " : <b>" + item["c4R"] + "</b>";
 					
+					alert("1hehe10");
 					atag.appendChild(h2in);
 					atag.appendChild(pin);
 					
+					alert("1hehe11");
 					divs.appendChild(atag);
 					
+					alert("1hehe12");
 					divf.appendChild(divs);
 					divf.appendChild(spanarr);
 					
+					alert("1hehe13");
 					lis.appendChild(divf);
 					ul.appendChild(lis);
 					alert(j+" dfs");
