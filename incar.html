@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Cloud Medical</title>
+		<link href="jqmobile/jquery.mobile-1.3.1.min.css" rel="stylesheet" type="text/css"/>
+		<link href="css/myicon.css" rel="stylesheet" type="text/css"/>
+		<link href="css/main.css" rel="stylesheet" type="text/css"/>
+		<link href="css/incar.css" rel="stylesheet" type="text/css"/>
+		<script src="js/cordova.js" type="text/javascript"></script>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.cn/maps/api/js?sensor=true"></script>
+		<script src="js/gmaps.js" type="text/javascript"></script>
+		<script src="js/otherUtil.js" type="text/javascript"></script>
+		<script src="js/incar.js" type="text/javascript"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+<!-- First Page -->
+		<div data-role="page" id="parking_search_service" data-close-btn="right" data-overlay-theme="e">
+			<div data-role="header" data-position="fixed" data-id="fixedHeaderNav">
+				<a href="javascript:gotoHome();" data-icon="home" id="parking_home">Home Page</a>
+				<a href="#" data-icon="back" id="parking_back" style="display: none;" onclick="showParkingMain();">Back</a>
+				<h1 id="parking_heading">在车上...</h1>
+				<div data-role="navbar" class="nav-glyphish-example" id="parking_nav_bar">
+	      			<ul>
+	        			<li>
+	          				<a href="javascript:showParkingMain()" class="customer_search_service ui-btn-active ui-state-persist" data-icon="custom" data-theme="c">Parking</a>
+	        			</li>
+	        			<li>
+	          				<a href="#football_live_search" class="customer_my_itinerary" data-icon="custom" data-theme="c">Football</a>
+	        			</li>
+	        			<li>
+	          				<a href="javascript:void(0)" class="medical_record" data-icon="custom" data-theme="c">Checker</a>
+	        			</li>
+	        			<li>
+	          				<a href="javascript:void(0)" class="medical_record" data-icon="custom" data-theme="c">商场室内地</a>
+	        			</li>
+	      			</ul>
+	    		</div>
+			</div>
+			<!-- -->
+			<div data-role="content" data-theme="c" id="parking_around_map" style="display: none;"></div>
+			<!-- -->
+			<div data-role="content" data-theme="c" id="parking_options">
+				<div data-theme="c">
+	      			<ul data-role="listview" data-inset="true">
+	      				<li>
+	          				<a href="javascript:getParkingAround();">  
+	            				<h2>Parking Around</h2>
+	            				<p>You can look for parking place around you.</p>
+	          				</a>
+	        			</li>
+	        			<li>
+	          				<a href="javascript:void(0);">
+	            				<h2>Search Parking Place</h2>
+	            				<input onclick="void(0);" type="text" id="parking_search_box" placeholder="Search Parking Places"/>
+	            				<input type="button" value="Search" onclick="if($('#parking_search_box')[0].value){searchParkingPlaces();}" />
+	          				</a>
+	        			</li>
+	        		</ul>
+        		</div>
+			</div>
+		</div>
+<!-- Second Page -->
+		<div data-role="page" id="parking_single_view" data-close-btn="right" data-overlay-theme="e">
+			<div data-role="header" data-position="fixed" data-id="fixedHeaderNav">
+				<a href="#" data-icon="back" data-rel="back">Back</a>
+				<h1 id="parking_single_heading"></h1>
+			</div>
+			<img height="300" width="100%" id="parking_single_image" src="" />
+			<div data-role="content" data-theme="c">
+				<div class="table-wrapper">
+					<ul data-role="listview" id="parking_single_data"></ul>
+				</div>
+			</div>
+		</div>
+<!-- Third Page -->
+		<div data-role="page" id="football_live_search" data-close-btn="right" data-overlay-theme="e">
+			<div data-role="header" data-position="fixed" data-id="fixedHeaderNav">
+				<a href="#" data-icon="back" data-rel="back">Back</a>
+				<h1 id="football_search_heading">Search</h1>
+			</div>
+			<div data-role="content" data-theme="c">
+				<p class="signupp">Search : <span class="dot"> </span><span id="football_search_error" class="error"> </span></p>
+				<p>
+					<input type="radio" name="football_search_type" value="1" id="football_league" checked="checked">
+					<label for="football_league">联赛</label>
+					<input type="radio" name="football_search_type" value="s" id="football_team">
+					<label for="football_team">球队</label>
+				</p>
+				<input id="football_search" type="text" placeholder="Search" >
+				<input id="football_submit" type="submit" value="Search!" onclick="searchFootball();">
+				<div class="values" id="football_search_values">
+					
+				</div>
+			</div>
+		</div>
+<!-- Fourth Page -->
+		<div data-role="page" id="football_single_live" data-close-btn="right" data-overlay-theme="e">
+			<div data-role="header" data-position="fixed" data-id="fixedHeaderNav">
+				<a href="#" data-icon="back" data-rel="back">Back</a>
+				<h1 id="football_single_live_heading"></h1>
+			</div>
+			<div data-role="content" data-theme="c" id="football_single_live_content">
+				<div>
+					<table style="margin-bottom: 20px;">
+						<tr>
+							<td style="width: 50%;"><img id="football_single_team1_img"></td>
+							<td style="margin-left: 15px;margin-right: 15px;"><div></div></td>
+							<td style="width: 50%;float:right;"><img id="football_single_team2_img" style="float:right;"></td>
+						</tr>
+						<tr>
+							<td><b><p id="football_single_team1_name"></p></b></td>
+							<td style="margin-left: 15px;margin-right: 15px;float:left;"><div>VS.</div></td>
+							<td style="width: 50%;float:right;"><b><p id="football_single_team2_name" style="float:right;"></p></b></td>
+						</tr>
+					</table>
+				</div>
+				<div>
+					<table>
+						<tr>
+							<td><b>Score: </b></td><td><p id="football_single_score"></p></td>
+						</tr>
+						<tr>
+							<td><b>Date: </b></td><td><p id="football_single_date"></p></td>
+						</tr>
+						<tr>
+							<td><b>Time: </b></td><td><p id="football_single_time"></p></td>
+						</tr>
+						<tr>
+							<td><a id="football_single_live_url" style="!important;">Watch This</a></td>
+						</tr>
+					</table>
+					
+				</div>
+			</div>
+		</div>
+		<div data-role="page" id="football_single_live_iframe" data-close-btn="right" data-overlay-theme="e">
+			<div data-role="header" data-position="fixed" data-id="fixedHeaderNav">
+				<a href="javascript:closeFootballIframe();" data-icon="back" data-rel="back">Back</a>
+				<h1 id="football_single_live_iframe_heading">Watch Match</h1>
+			</div>
+			<div  data-role="content" data-theme="c" style="height: 70%;">
+				<iframe id="football_single_item_iframe" src="" width="100%" height="100%" frameborder="0"></iframe>
+			</div>
+		</div>
+	</body>
+</html>

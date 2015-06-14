@@ -1,0 +1,108 @@
+span.dot {
+  background: url(../images/dot.png)no-repeat;
+  width: 10px;
+  height: 16px;
+  display: inline-block;
+}
+.signupp {
+   font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  margin: 15px 0px;
+}
+.error, #football_search_error{
+		color: #FF1111;
+		margin-top: 5px;
+	}
+///*
+.signup input[type="submit"], #football_submit{
+  color: #FFF;
+  letter-spacing: 0.5px;
+  border:none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 0px;
+  width: 100%;
+  border-radius: 4px;
+   -webkit-border-radius:4px;
+   -moz-border-radius:4px;
+   -o-border-radius:4px;
+  cursor: pointer;
+  outline: none;
+  margin:35px 0px 0px 0px;
+  background: rgb(1,194,194); 
+}
+.signup input[type="submit"]:hover{
+	background: #2ca5a5; 
+
+	transition: all 0.3s ease; 
+     -webkit-transition: all 0.3s ease;
+     -moz-transition: all 0.3s ease;
+     -o-transition: all 0.3s ease;
+}
+//*/
+
+@media(max-width:1440px){
+.signup {
+  width: 23%;	
+}
+body {
+  min-height: 700px;
+}
+}
+@media(max-width:1280px){
+.signup {
+  width: 25%;
+}	
+}
+@media(max-width:1024px){
+.signup {
+  width: 30%;
+   margin: 3em auto 0;	
+}
+body {
+  min-height: 600px;
+}
+}
+@media(max-width:768px){
+.signup {
+  width: 40%;
+}
+}
+@media(max-width:640px){
+.signup {
+  width: 47%;
+}	
+}
+@media(max-width:480px){
+.signup {
+  width: 65%;
+   margin: 4em auto 0;
+}
+body {
+  min-height: 550px;
+}
+}
+@media(max-width:320px){
+.signup input[type="text"] {
+  width: 89%;	
+  font-size: 13px;
+  padding: 6px 10px 6px 10px;
+}
+.signup p {
+  font-size: 13px;
+  margin: 5px 0px;
+}
+.signup input[type="submit"] {
+  font-size: 12px;
+  padding: 10px 0px;
+  margin: 20px 0px 0px 0px;
+}
+.signup {
+  width: 65%;
+  margin: 2em auto 0;
+}
+body {
+  min-height: 460px;
+}
+}

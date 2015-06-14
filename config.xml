@@ -1,0 +1,11 @@
+<widget id="com.incar.hello" version="0.0.1">
+        <name>In Car...</name>
+        <description>
+            Simple App
+        </description>
+        <author email="haha@incar.com" href="http://incar.com">
+            Incar Team
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+    </widget>
