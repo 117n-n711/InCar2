@@ -309,7 +309,6 @@ function putFootballList(result){
 				var item = result.list[j];
 				if(item['c4T1'] && item['c4T2']){
 					var lis = document.createElement("li");
-					alert("1hehe");
 					lis.style.overflow = "hidden";
 					lis.setAttribute("data-iconpos", "right");
 					lis.setAttribute("data-wrapperels", "div");
@@ -318,22 +317,17 @@ function putFootballList(result){
 					lis.setAttribute("data-corners", "false");
 					lis.setAttribute("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-last-child ui-btn-up-c");
 					lis.setAttribute("data-theme", "c");
-					alert("1hehe2");
 					
 					var divf = document.createElement("div");
 					divf.setAttribute("class", "ui-btn-inner ui-li");
 					
-					
-					alert("1hehe3");
 					var divs = document.createElement("div");
 					divs.setAttribute("class", "ui-btn-text");
 					
-					alert("1hehe4");
 					var spanarr = document.createElement("span");
 					spanarr.setAttribute("class", "ui-icon ui-icon-arrow-r ui-icon-shadow");
 					spanarr.innerText = " ";
 					
-					alert("1hehe5");
 					var atag = document.createElement("a");
 					atag.addAttribute("class", "ui-link-inherit");
 					
